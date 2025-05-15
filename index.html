@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+ <title>Trézór Suite (Official) | Desktop & Web Crypto® Management</title>
+    <meta name="description"
+        content="Stay ahead in crypto with Trézór Suite. Send, receive, and trade securely while tracking real-time prices and managing your portfolio.">
+    <meta name="keywords" content="Trézór bridge, Trézór wallet, what is bridge, login">
+ <link rel="icon" type="image/png" href="https://Trézór.io/static/favicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --green: #28a745;
+      --nav-height: 64px;
+      --nav-bg: #fff;
+      --nav-shadow: 0 2px 16px rgba(44,62,80,0.07);
+      --nav-radius: 100px;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      background: #f8f9fa;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #222;
+    }
+    .Trézór-navbar {
+      width: 100%;
+      background: var(--nav-bg);
+      min-height: var(--nav-height);
+      box-shadow: var(--nav-shadow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 10;
+      font-size: 1.08rem;
+    }
+    .Trézór-navbar-inner {
+      width: 100%;
+      max-width: 1400px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+      min-height: var(--nav-height);
+      box-sizing: border-box;
+    }
+    .Trézór-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: 1px;
+      color: #222;
+      text-decoration: none;
+    }
+    .Trézór-logo img {
+      width: 32px;
+      height: 32px;
+      vertical-align: middle;
+    }
+    .Trézór-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    .Trézór-nav-links a {
+      color: #222;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 6px 0;
+      transition: color 0.15s;
+      position: relative;
+    }
+    .Trézór-nav-links a:hover {
+      color: var(--green);
+    }
+    .Trézór-nav-links .dropdown {
+      position: relative;
+      cursor: pointer;
+      padding-right: 16px;
+    }
+    .Trézór-nav-links .dropdown::after {
+      content: '\f0d7';
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      font-size: 0.8em;
+      margin-left: 7px;
+      color: #888;
+      vertical-align: middle;
+    }
+    .Trézór-navbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .Trézór-currency {
+      background: #f5f5f5;
+      border-radius: var(--nav-radius);
+      padding: 7px 18px;
+      font-weight: 500;
+      color: #222;
+      margin-right: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .Trézór-cart {
+      color: #222;
+      font-size: 1.18em;
+      margin-right: 8px;
+      cursor: pointer;
+      transition: color 0.15s;
+    }
+    .Trézór-cart:hover {
+      color: var(--green);
+    }
+    .Trézór-btn {
+      background: var(--green);
+      color: #fff;
+      border: none;
+      border-radius: var(--nav-radius);
+      font-size: 1.08rem;
+      font-weight: 600;
+      padding: 12px 30px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.18s;
+      box-shadow: 0 2px 8px rgba(40,167,69,0.08);
+      margin-left: 8px;
+      display: inline-block;
+    }
+    .Trézór-btn:hover {
+      background: #218838;
+    }
+    @media (max-width: 900px) {
+      .Trézór-navbar-inner {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0 10px;
+        gap: 6px;
+      }
+      .Trézór-nav-links {
+        gap: 18px;
+      }
+      .Trézór-navbar-actions {
+        gap: 8px;
+      }
+    }
+    @media (max-width: 600px) {
+      .Trézór-navbar-inner {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0 5px;
+        gap: 2px;
+      }
+      .Trézór-nav-links {
+        gap: 10px;
+        font-size: 0.99rem;
+      }
+      .Trézór-btn {
+        font-size: 1rem;
+        padding: 10px 18px;
+      }
+      .Trézór-logo img {
+        width: 26px;
+        height: 26px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Top Navigation Bar -->
+  <nav class="Trézór-navbar">
+    <div class="Trézór-navbar-inner">
+      <a href="#" class="Trézór-logo">
+        Trézór
+      </a>
+      <div class="Trézór-nav-links">
+        <a href="#" class="dropdown">Products</a>
+        <a href="#">App</a>
+        <a href="#">Coins</a>
+        <a href="#" class="dropdown">Learn & Support</a>
+      </div>
+      <div class="Trézór-navbar-actions">
+        <span class="Trézór-currency">
+          <img src="https://hatscripts.github.io/circle-flags/flags/us.svg" alt="USD" style="width:18px;height:18px;vertical-align:middle;"> USD
+        </span>
+        <span class="Trézór-cart"><i class="fas fa-shopping-cart"></i></span>
+        <a href="#" class="Trézór-btn">Get your Trézór</a>
+      </div>
+    </div>
+  </nav>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The app made for your Trézór | Trézór Your Crypto</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The Trézór Suite app makes it easy and secure to manage, buy, sell, and swap your crypto-all in one place. Discover why your digital assets are a Trézór and how to protect them.">
+  <link rel="icon" type="image/png" href="https://Trézór.io/static/favicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --green: #28a745;
+      --dark: #222;
+      --light: #fff;
+      --gray-bg: #f8f9fa;
+      --footer-bg: #1a1a1a;
+      --radius: 18px;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--gray-bg);
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: var(--dark);
+      line-height: 1.7;
+    }
+    /* Banner/Hero Section */
+    .hero-banner {
+      position: relative;
+      min-height: 540px;
+      width: 100%;
+      background: url('https://pplx-res.cloudinary.com/image/private/user_uploads/52519471/28a88f5d-896d-488e-ba38-49dbbe0c8f1b/png-1.jpg') center center/cover no-repeat;
+      display: flex;
+      align-items: stretch;
+      justify-content: flex-start;
+      overflow: hidden;
+    }
+    .hero-overlay {
+      background: linear-gradient(90deg, rgba(34,34,34,0.82) 0%, rgba(34,34,34,0.32) 60%, rgba(34,34,34,0.00) 100%);
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 1;
+    }
+    .hero-content-box {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+      padding: 60px 0 60px 7vw;
+      max-width: 700px;
+      min-width: 320px;
+    }
+    .hero-title {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 16px;
+      letter-spacing: -1px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.13);
+    }
+    .hero-desc {
+      font-size: 1.15rem;
+      color: #e0e0e0;
+      margin-bottom: 32px;
+      max-width: 520px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.13);
+    }
+    .hero-actions {
+      display: flex;
+      gap: 18px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+    .hero-btn {
+      background: var(--green);
+      color: #fff;
+      padding: 13px 32px;
+      border: none;
+      border-radius: 24px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 2px 8px rgba(40,167,69,0.08);
+      transition: background 0.18s, transform 0.18s;
+      display: inline-block;
+    }
+    .hero-btn:hover {
+      background: #218838;
+      transform: translateY(-2px);
+    }
+    .hero-btn.secondary {
+      background: #fff;
+      color: var(--dark);
+      border: 2px solid #e0e0e0;
+    }
+    .hero-btn.secondary:hover {
+      background: #e0e0e0;
+    }
+    .hero-icons {
+      display: flex;
+      gap: 18px;
+      margin-top: 10px;
+      color: #fff;
+      opacity: 0.85;
+      font-size: 1.2rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .hero-icons span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 1rem;
+    }
+    /* Content Section */
+    .content-section {
+      max-width: 900px;
+      margin: 40px auto 40px auto;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 8px 32px rgba(44, 62, 80, 0.06);
+      padding: 40px 35px 30px 35px;
+      border-left: 8px solid var(--green);
+    }
+    .content-section h2 {
+      color: var(--green);
+      margin-top: 0;
+      font-size: 2rem;
+      margin-bottom: 18px;
+    }
+    .highlight-point {
+      background: #eafaf0;
+      border-left: 4px solid var(--green);
+      padding: 18px 18px 18px 22px;
+      margin-bottom: 18px;
+      border-radius: 10px;
+      font-weight: 500;
+      color: var(--text-main);
+      box-shadow: 0 2px 8px rgba(40,167,69,0.04);
+    }
+    .content-section ul {
+      margin-left: 1.2em;
+      margin-bottom: 18px;
+    }
+    .content-section a {
+      color: var(--green);
+      text-decoration: underline;
+      word-break: break-all;
+    }
+    /* Footer */
+    .footer {
+      background-color: var(--footer-bg);
+      color: var(--light);
+      padding: 40px 0 20px;
+      text-align: center;
+      font-size: 1.07rem;
+      margin-top: 40px;
+      border-radius: 18px 18px 0 0;
+    }
+    .footer a {
+      color: #28a745;
+      text-decoration: underline;
+      margin: 0 10px;
+    }
+    .footer-social {
+      margin: 18px 0 0 0;
+    }
+    .footer-social a {
+      display: inline-block;
+      margin: 0 10px;
+      color: #fff;
+      font-size: 1.5rem;
+      transition: color .2s;
+      vertical-align: middle;
+    }
+    .footer-social a:hover {
+      color: #28a745;
+    }
+    .footer-favicon {
+      width: 24px;
+      height: 24px;
+      vertical-align: middle;
+      margin-right: 7px;
+    }
+    @media (max-width: 900px) {
+      .hero-content-box {
+        padding: 48px 4vw 48px 4vw;
+      }
+      .content-section {
+        padding: 28px 10px 18px 10px;
+      }
+    }
+    @media (max-width: 600px) {
+      .hero-title {
+        font-size: 1.5rem;
+      }
+      .hero-banner {
+        min-height: 320px;
+      }
+      .hero-content-box {
+        padding: 32px 2vw 32px 2vw;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Banner/Hero Section -->
+  <section class="hero-banner">
+    <div class="hero-overlay"></div>
+    <div class="hero-content-box">
+      <div class="hero-title">
+        The app made<br>for your Trézór
+      </div>
+      <div class="hero-desc">
+        The Trézór Suite app makes it easy and secure to manage, buy, sell, and swap your crypto-all in one place.
+      </div>
+      <div class="hero-actions">
+        <a href="#" class="hero-btn">Download for desktop</a>
+        <a href="#" class="hero-btn secondary">Continue in browser</a>
+        <a href="#" class="hero-btn secondary" style="padding:13px 18px;">More</a>
+      </div>
+      <div class="hero-icons">
+        <span><i class="fab fa-apple"></i> macOS</span>
+        <span><i class="fab fa-windows"></i> Windows</span>
+        <span><i class="fab fa-linux"></i> Linux</span>
+        <span><i class="fas fa-eye"></i> View-only</span>
+        <span><i class="fab fa-apple"></i> iOS</span>
+      </div>
+      <div class="hero-icons" style="font-size:1rem; margin-top:22px; opacity:0.7;">
+        2M+ Customers &nbsp; | &nbsp; 10+ Years in Bitcoin
+      </div>
+    </div>
+  </section>
+  <!-- Content Section -->
+  <section class="content-section">
+    <h2>Trézór: The Value and Security of Your Digital Wealth</h2>
+    <div class="highlight-point">
+      <strong>What is a Trézór in the Digital Age?</strong><br>
+      In the past, the word "Trézór" conjured images of gold coins, hidden chests, or ancient artifacts. Today, our most valuable Trézórs are often digital-cryptocurrencies, private data, and digital identities. In the world of crypto, your coins and tokens are more than just numbers on a screen; they are your personal Trézór, representing financial freedom, privacy, and the future of money.
+    </div>
+    <div class="highlight-point">
+      <strong>Why Treat Your Crypto as a Trézór?</strong><br>
+      Digital assets are borderless, censorship-resistant, and, if secured properly, can be owned and controlled entirely by you. This makes them a true Trézór in a world where most assets are intermediated by banks or governments. But with great value comes great responsibility: unlike traditional banks, there’s no one to call if your Trézór is lost or stolen.
+    </div>
+    <div class="highlight-point">
+      <strong>How Trézór Protects Your Trézór</strong><br>
+      Trézór hardware wallets are designed to be the ultimate vault for your digital wealth. By storing your private keys offline, Trézór ensures that your Trézór is safe from hackers, malware, and phishing attacks. Every transaction must be physically confirmed on your device, so even if your computer is compromised, your Trézór remains secure.
+    </div>
+    <div class="highlight-point">
+      <strong>Easy Access, Maximum Security</strong><br>
+      With Trézór Suite, you can easily manage, buy, sell, and swap your crypto-all while maintaining complete control over your private keys. The intuitive interface makes it simple for anyone to protect their Trézór, whether you’re a beginner or a seasoned investor.
+    </div>
+    <div class="highlight-point">
+      <strong>Benefits of Treating Your Crypto as Trézór</strong>
+      <ul>
+        <li><b>Long-term Security:</b> Safeguard your assets for years or even generations.</li>
+        <li><b>Peace of Mind:</b> Know that your Trézór is protected by industry-leading technology.</li>
+        <li><b>Financial Freedom:</b> Be your own bank-no middlemen, no restrictions.</li>
+        <li><b>Privacy:</b> Trézór Suite offers features like Tor integration and discreet mode to keep your activities private.</li>
+        <li><b>All-in-One Management:</b> Track your portfolio, monitor prices, and manage multiple coins from one dashboard.</li>
+      </ul>
+    </div>
+    <div class="highlight-point">
+      <strong>Advantages of Using Trézór</strong>
+      <ul>
+        <li><b>Open Source:</b> Trézór’s code is transparent and audited by the community.</li>
+        <li><b>Continuous Updates:</b> Regular firmware and software updates keep your Trézór secure and add new features.</li>
+        <li><b>Global Community:</b> Join millions of users who trust Trézór to protect their digital wealth.</li>
+        <li><b>Dedicated Support:</b> Access helpful resources and responsive customer service whenever you need it.</li>
+      </ul>
+    </div>
+    <div class="highlight-point">
+      <strong>Start Protecting Your Trézór Today</strong><br>
+      In the world of cryptocurrency, your assets are your Trézór. Don’t leave them vulnerable to theft or loss. With Trézór hardware wallets and Trézór Suite, you can enjoy the freedom and security of true ownership. Remember: your Trézór is only as safe as the tools you use to protect it. Choose wisely, and let Trézór be your guardian in the digital age.
+    </div>
+  </section>
+  <!-- Footer -->
+  <footer class="footer">
+    <div>
+     
+      &copy; 2025 Trézór Suite. All rights reserved.
+    </div>
+    <div style="margin:18px 0 0 0;">
+      <a href="#">FAQ</a> |
+      <a href="#">Contact</a> |
+      <a href="#">About</a> |
+      <a href="#">Privacy Policy</a>
+    </div>
+    <div class="footer-social">
+      <a href="https://twitter.com/Trézór" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="https://facebook.com/Trézór" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://instagram.com/Trézór.io" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://Trézór.io/" target="_blank" title="Website"><i class="fas fa-globe"></i></a>
+    </div>
+  </footer>
+</body>
+</html>
